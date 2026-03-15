@@ -34,7 +34,7 @@ jobs:
           project_id: notely-490202
           service_account_key: ${{ secrets.GCP_CREDENTIALS }}
 
-  
+  # 
       - name: Check gcloud authentication
         run: gcloud auth list
 
