@@ -28,7 +28,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: notely-490202
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          service_account_key: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Build and push Docker image
         run: |
