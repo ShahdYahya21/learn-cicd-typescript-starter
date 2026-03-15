@@ -6,11 +6,10 @@ on:
 
 jobs:
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout the repository
+      # 1️⃣ Checkout code
       - name: Check out code
         uses: actions/checkout@v4
 
@@ -28,18 +27,18 @@ jobs:
       - name: Build app
         run: npm run build
 
-      # 5️⃣ Authenticate with GCP using your service account secret
+      # 5️⃣ Authenticate with GCP
       - name: Authenticate with GCP
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: notely-490202
           service_account_key: ${{ secrets.GCP_CREDENTIALS }}
 
-      # 6️⃣ Optional: Verify the active account
+      # 6️⃣ Optional debug: verify authentication
       - name: Verify gcloud authentication
         run: gcloud auth list
 
-      # 7️⃣ Build and push the Docker image to Artifact Registry
+      # 7️⃣ Build and push Docker image
       - name: Build and push Docker image
         run: |
           gcloud builds submit \
